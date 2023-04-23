@@ -33,17 +33,17 @@ if __name__ == "__main__":
 
     # region 训练模型
     ModuleSegmentation("训练模型")
-    trainModel(train_X[:8000, :], train_Y[:8000, :])
+    trainModel(train_X, train_Y)
     # endregion
 
     # 加载测试数据
     ModuleSegmentation("加载测试数据")
-    test_X = pd.read_csv(r".\Data\FeatureData\featureSmooth-Bearing1_1.csv", encoding='utf-8', header=None, sep=',').values
-    test_Y = pd.read_csv(r".\Data\FeatureData\label-Bearing1_1.csv", encoding='utf-8', header=None, sep=',').values
+    test_X = pd.read_csv(r".\Data\FeatureData\featureSmooth-Bearing1_3.csv", encoding='utf-8', sep=',').values
+    test_Y = pd.read_csv(r".\Data\FeatureData\label-Bearing1_3.csv", encoding='utf-8', header=None, sep=',').values
     # 加载索引
     index = pd.read_csv(r".\Data\FeatureData\featureIndex.csv", encoding='utf-8', sep=',', header=None).values.ravel()
     # 加载模型
-    model = LSTMForecast.LSTMForeast( lr=0.01, outputDim=1, batchSize=50, epoch=100, timeSteps=train_X.shape[1], featureDim=1, isNormalization=True, featureRange=(0, 1))
+    model = LSTMForecast.LSTMForeast( lr=0.01, outputDim=1, batchSize=50, epoch=100, timeSteps=1, featureDim=train_X.shape[1], isNormalization=True, featureRange=(0, 1))
     result = model.predict(test_X[:, index])
 
     # 绘制预测结果

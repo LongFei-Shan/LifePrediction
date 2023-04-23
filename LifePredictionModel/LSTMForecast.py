@@ -91,7 +91,7 @@ class LSTMForeast:
         # 构建测试数据
         X = np.reshape(X, (-1, self.timeSteps, self.featureDim))
         # 预测
-        result = self.lstm.model.predict(X)
+        result = self.lstm.predict(X)
         # 数据反归一化
         if self.isNormalization:
             normalization = joblib.load("./NormalizationModel/MinMaxScalerNormalization-y.gz")

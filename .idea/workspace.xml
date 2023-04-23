@@ -5,37 +5,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/LifePrediction.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LifePrediction.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConstructData.py" beforeDir="false" afterPath="$PROJECT_DIR$/ConstructData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/featureIndex.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/featureIndex.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_4.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_5.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_6.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_7.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_4.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_5.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_6.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_7.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing3_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing3_1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing3_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing3_2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing3_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing3_3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/TestData/TestData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/TestData/TestData.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/TestData/TestLabel.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/TestData/TestLabel.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/TrainData/trainData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/TrainData/trainData.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/TrainData/trainLabel.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/TrainData/trainLabel.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureSelectionIndicators/SensitivityIndex.py" beforeDir="false" afterPath="$PROJECT_DIR$/FeatureSelectionIndicators/SensitivityIndex.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LifePredictionModel/LSTMBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/LifePredictionModel/LSTMBase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LifePredictionModel/LSTMForecast.py" beforeDir="false" afterPath="$PROJECT_DIR$/LifePredictionModel/LSTMForecast.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NormalizationModel/MinMaxScalerNormalization-x.gz" beforeDir="false" afterPath="$PROJECT_DIR$/NormalizationModel/MinMaxScalerNormalization-x.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NormalizationModel/MinMaxScalerNormalization-y.gz" beforeDir="false" afterPath="$PROJECT_DIR$/NormalizationModel/MinMaxScalerNormalization-y.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/keras_metadata.pb" beforeDir="false" afterPath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/keras_metadata.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/saved_model.pb" beforeDir="false" afterPath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/saved_model.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/variables/variables.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/variables/variables.data-00000-of-00001" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/variables/variables.index" beforeDir="false" afterPath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/variables/variables.index" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RunProgram.py" beforeDir="false" afterPath="$PROJECT_DIR$/RunProgram.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.png" beforeDir="false" afterPath="$PROJECT_DIR$/model.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +99,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="RunProgram" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="LSTMBase" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="LifePrediction" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -128,8 +107,29 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/LifePredictionModel" />
       <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LifePredictionModel/LSTMBase.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RunProgram" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="LifePrediction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\31843\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RunProgram.py" />
@@ -144,6 +144,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.RunProgram" />
+        <item itemvalue="Python.LSTMBase" />
         <item itemvalue="Python.ConstructData" />
         <item itemvalue="Python.Denoising" />
       </list>
@@ -170,6 +171,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
