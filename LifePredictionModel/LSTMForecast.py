@@ -6,7 +6,7 @@
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 import joblib
-import LSTMBase
+from LifePredictionModel import LSTMBase
 import os
 from typing import Tuple, List, Optional, Union
 
@@ -35,7 +35,7 @@ class LSTMForeast:
         # 加载模型
         self.lstm = LSTMBase.LSTMBase(lr=self.lr, outputDim=self.outputDim, batchSize=self.batchSize, epoch=self.epoch, timeSteps=self.timeSteps, featureDim=self.featureDim)
 
-    def preproccessMethodNormalization(self, data: np.ndarray) -> np.ndarray:
+    def preproccessMethodNormalization(self, data: np.ndarray, name: str) -> np.ndarray:
         """
 
         :param data: 数据
@@ -52,7 +52,7 @@ class LSTMForeast:
         # 存储归一化模型
         if not os.path.exists("./NormalizationModel"):
             os.mkdir("./NormalizationModel")
-        joblib.dump(mms, "./NormalizationModel/MinMaxScalerNormalization.gz")
+        joblib.dump(mms, f"./NormalizationModel/MinMaxScalerNormalization-{name}.gz")
         return normalResult
 
     def constructionData(self, x: Union[List, np.ndarray], y: Union[List, np.ndarray]) -> (np.ndarray, np.ndarray):
@@ -73,7 +73,8 @@ class LSTMForeast:
         """
         # 数据预处理
         if self.isNormalization:
-            x = self.preproccessMethodNormalization(x)
+            x = self.preproccessMethodNormalization(x, "x")
+            y = self.preproccessMethodNormalization(y, "y")
         # 训练模型
         x_train, y_train = self.constructionData(x, y)
         self.lstm.fit(x_train, y_train)
@@ -85,12 +86,16 @@ class LSTMForeast:
         """
         # 数据预处理
         if self.isNormalization:
-            normalization = joblib.load("./NormalizationModel/MinMaxScalerNormalization.gz")
+            normalization = joblib.load("./NormalizationModel/MinMaxScalerNormalization-x.gz")
             X = normalization.transform(X)
         # 构建测试数据
         X = np.reshape(X, (-1, self.timeSteps, self.featureDim))
         # 预测
         result = self.lstm.model.predict(X)
+        # 数据反归一化
+        if self.isNormalization:
+            normalization = joblib.load("./NormalizationModel/MinMaxScalerNormalization-y.gz")
+            result = normalization.inverse_transform(result)
 
         return result
 

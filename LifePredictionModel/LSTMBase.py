@@ -10,6 +10,7 @@ import tensorflow.keras as keras
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import MeanSquaredError
 import os
+from PredictionPicture import LSTMLossPicture
 
 
 class LSTMBase:
@@ -56,7 +57,7 @@ class LSTMBase:
         :return:
         """
         # 训练模型
-        self.model.fit(x, y, batch_size=self.batchSize, epochs=self.epoch, verbose=0)
+        self.model.fit(x, y, batch_size=self.batchSize, epochs=self.epoch, verbose=1)
         # 存储模型
         if not os.path.exists("./PredictionModel"):
             os.mkdir("./PredictionModel")
