@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8cbd2076-a7f4-4d28-9a85-01d670ef9864" name="Changes" comment="" />
+    <list default="true" id="8cbd2076-a7f4-4d28-9a85-01d670ef9864" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/LifePrediction.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LifePrediction.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConstructData.py" beforeDir="false" afterPath="$PROJECT_DIR$/ConstructData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/featureIndex.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/featureIndex.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_6.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing1_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_5.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_6.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing2_7.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing3_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing3_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing3_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing3_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/FeatureData/label-Bearing3_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/FeatureData/label-Bearing3_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/TestData/TestData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/TestData/TestData.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/TestData/TestLabel.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/TestData/TestLabel.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/TrainData/trainData.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/TrainData/trainData.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/TrainData/trainLabel.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Data/TrainData/trainLabel.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FeatureSelectionIndicators/SensitivityIndex.py" beforeDir="false" afterPath="$PROJECT_DIR$/FeatureSelectionIndicators/SensitivityIndex.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LifePredictionModel/LSTMBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/LifePredictionModel/LSTMBase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NormalizationModel/MinMaxScalerNormalization-x.gz" beforeDir="false" afterPath="$PROJECT_DIR$/NormalizationModel/MinMaxScalerNormalization-x.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NormalizationModel/MinMaxScalerNormalization-y.gz" beforeDir="false" afterPath="$PROJECT_DIR$/NormalizationModel/MinMaxScalerNormalization-y.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/saved_model.pb" beforeDir="false" afterPath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/saved_model.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/variables/variables.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/variables/variables.data-00000-of-00001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/variables/variables.index" beforeDir="false" afterPath="$PROJECT_DIR$/PredictionModel/LSTMLifePredictionModel/variables/variables.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RunProgram.py" beforeDir="false" afterPath="$PROJECT_DIR$/RunProgram.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,13 +63,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\LifePrediction\PredictionPicture" />
@@ -137,5 +170,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

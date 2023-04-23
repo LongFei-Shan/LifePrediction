@@ -5,6 +5,7 @@
 # @Author    :LongFei Shan
 import numpy as np
 from typing import Optional, List, Tuple, Union
+import matplotlib.pyplot as plt
 
 
 def BoxModel(feature: Union[List[float], np.ndarray, Tuple]) -> Tuple[float, float]:
@@ -30,7 +31,7 @@ def BoxModel(feature: Union[List[float], np.ndarray, Tuple]) -> Tuple[float, flo
     return DownLimit, UpLimit
 
 
-def sensitivityIndex(feature: Union[List[float], np.ndarray, Tuple], length: int=50) -> int:
+def sensitivityIndex(feature: Union[List[float], np.ndarray, Tuple], length: int=500) -> int:
     """
     灵敏度指标
 
@@ -39,7 +40,7 @@ def sensitivityIndex(feature: Union[List[float], np.ndarray, Tuple], length: int
     :return: 灵敏度指标
     """
     # 箱型图
-    DownLimit, UpLimit = BoxModel(feature)
+    DownLimit, UpLimit = BoxModel(feature[:int(len(feature)*0.2)])
     # 计算灵敏度指标
     index = -1
     for i in range(len(feature)):
@@ -48,6 +49,8 @@ def sensitivityIndex(feature: Union[List[float], np.ndarray, Tuple], length: int
                 for j in range(i, i+length):
                     if feature[j] > UpLimit or feature[j] < DownLimit:
                         index = i
+                        if j == i+length -1:
+                            return index
                     else:
                         index = -1
                         break
@@ -55,6 +58,8 @@ def sensitivityIndex(feature: Union[List[float], np.ndarray, Tuple], length: int
                 for j in range(i, len(feature)):
                     if feature[j] > UpLimit or feature[j] < DownLimit:
                         index = i
+                        if j == len(feature) -1:
+                            return index
                     else:
                         index = -1
                         break

@@ -87,8 +87,8 @@ def saveFeature(feature, name):
 
 def loadTrainData():
     # 读取训练数据
-    # dir = r"D:\LongFei-Shan\数据集\bearing\PHM\Test_set"
-    dir = r"D:\LongFei-Shan\数据集\bearing\PHM\Learning_set"
+    # dir = r"E:\数据集\bearing\PHM\Test_set"
+    dir = r"E:\数据集\bearing\PHM\Learning_set"
     trainDataLifeTime = {"Bearing1_1": 467, "Bearing1_2": 145, "Bearing2_1": 151.67, "Bearing2_2": 132.67, "Bearing3_1": 85.67, "Bearing3_2": 272.67}
     # trainDataLifeTime = {"Bearing1_3": 95.5, "Bearing1_4": 5.65, "Bearing1_5": 26.83, "Bearing1_6": 24.33,
     #                      "Bearing1_7": 126.17, "Bearing2_3": 125.5, "Bearing2_4": 23.17, "Bearing2_5": 51.5,
@@ -97,14 +97,14 @@ def loadTrainData():
     trainData = {}
     trainLabel = {}
     # 读取每个文件最后两列数据
-    for dirName in dirNames:
-        fileNames = os.listdir(f"{dir}/{dirName}")
-        data = pd.read_csv(f"{dir}/{dirName}/{fileNames[0]}", sep=",", encoding="utf-8").values
-        for fileName in tqdm.tqdm(fileNames[1:], desc=f"读取训练数据进度-{dirName}", ncols=100, file=sys.stdout):
-            tempData = pd.read_csv(f"{dir}/{dirName}/{fileName}", sep=",", encoding="utf-8").values
-            data = np.vstack((data, tempData))
-        trainData[dirName] = data[:, -2:]
-        trainLabel[dirName] = np.linspace(0, trainDataLifeTime[dirName], len(data))
+    # for dirName in dirNames:
+    #     fileNames = os.listdir(f"{dir}/{dirName}")
+    #     data = pd.read_csv(f"{dir}/{dirName}/{fileNames[0]}", sep=",", encoding="utf-8").values
+    #     for fileName in tqdm.tqdm(fileNames[1:], desc=f"读取训练数据进度-{dirName}", ncols=100, file=sys.stdout):
+    #         tempData = pd.read_csv(f"{dir}/{dirName}/{fileName}", sep=",", encoding="utf-8").values
+    #         data = np.vstack((data, tempData))
+    #     trainData[dirName] = data[:, -2:]
+    #     trainLabel[dirName] = np.linspace(0, trainDataLifeTime[dirName], len(data))
     return trainData, trainLabel, dirNames, trainDataLifeTime
 
 
@@ -132,47 +132,44 @@ if __name__ == "__main__":
     FS = 25600
     # endregion
 
-    #region 信号去噪
-    ModuleSegmentation("信号去噪")
-    emd = EMDDenoising("EED", progress=True, waveletName="db6", thresholdName="VisuShrink", thresholdFunctionName="soft", level=6, mode="symmetric", thresholdACF=0.5, exceedThresholdNumber=10)
-    denoiseSignal = {}
-    windows = 20480
-    for dirName in dirNames:
-        denoise = {}
-        denoise["X"] = []
-        denoise["Y"] = []
-        for i in tqdm.tqdm(range(len(trainData[dirName]) // windows + 1), desc=f"信号去噪进度-{dirName}", ncols=100, file=sys.stdout):
-            # denoise["X"].extend(emd.fit_transfrom(trainData[dirName][i*windows:(i+1)*windows, 0]))
-            # denoise["Y"].extend(emd.fit_transfrom(trainData[dirName][i * windows:(i + 1) * windows, 1]))
-            denoise["X"].extend(trainData[dirName][i*windows:(i+1)*windows, 0])
-            denoise["Y"].extend(trainData[dirName][i*windows:(i+1)*windows, 1])
-        denoiseSignal[dirName] = denoise
-    # endregion
-
-    #region 特征提取
-    ModuleSegmentation("特征提取")
-    windows = 1024
-    feature = {}
-    for dirName in dirNames:
-        tempFeatureX = featureExtraction(denoiseSignal[dirName]["X"], windows, FS, dirName, "X")
-        tempFeatureY = featureExtraction(denoiseSignal[dirName]["Y"], windows, FS, dirName, "Y")
-        feature[dirName] = np.hstack((tempFeatureX, tempFeatureY))
-        saveFeature(feature[dirName], f"feature-{dirName}")
-    # 将trainLabel分别存储到csv中
-    for dirName in tqdm.tqdm(dirNames, desc=f"label-存储进度", ncols=100, file=sys.stdout):
-        pd.DataFrame(np.linspace(0, trainDataLifeTime[dirName], len(feature[dirName]))).to_csv(f"./Data/FeatureData/label-{dirName}.csv", index=False, sep=",", encoding="utf-8")
-    # endregion
-
-    #region 特征光滑
-    ModuleSegmentation("特征光滑")
-    for dirName in tqdm.tqdm(dirNames, desc="特征光滑进度", ncols=100, file=sys.stdout):
-        feature = pd.read_csv(f"./Data/FeatureData/feature-{dirName}.csv", sep=",", encoding="utf-8").values
-        featureSmooth = []
-        for subFeature in feature.T:
-            tempSmooth = FeatureSmoothing.lowessFeatureSmooth(np.linspace(0, 1, len(subFeature)), subFeature, frac=0.1, it=3)
-            featureSmooth.append(tempSmooth[:, 1])
-        saveFeature(np.array(featureSmooth).T, f"featureSmooth-{dirName}")
-    # endregion
+    # #region 信号去噪
+    # ModuleSegmentation("信号去噪")
+    # emd = EMDDenoising("EED", progress=True, waveletName="db6", thresholdName="VisuShrink", thresholdFunctionName="soft", level=6, mode="symmetric", thresholdACF=0.5, exceedThresholdNumber=10)
+    # denoiseSignal = {}
+    # windows = 20480
+    # for dirName in dirNames:
+    #     denoise = {}
+    #     denoise["X"] = []
+    #     denoise["Y"] = []
+    #     for i in tqdm.tqdm(range(len(trainData[dirName]) // windows + 1), desc=f"信号去噪进度-{dirName}", ncols=100, file=sys.stdout):
+    #         # denoise["X"].extend(emd.fit_transfrom(trainData[dirName][i*windows:(i+1)*windows, 0]))
+    #         # denoise["Y"].extend(emd.fit_transfrom(trainData[dirName][i * windows:(i + 1) * windows, 1]))
+    #         denoise["X"].extend(trainData[dirName][i*windows:(i+1)*windows, 0])
+    #         denoise["Y"].extend(trainData[dirName][i*windows:(i+1)*windows, 1])
+    #     denoiseSignal[dirName] = denoise
+    # # endregion
+    #
+    # #region 特征提取
+    # ModuleSegmentation("特征提取")
+    # windows = 1024
+    # feature = {}
+    # for dirName in dirNames:
+    #     tempFeatureX = featureExtraction(denoiseSignal[dirName]["X"], windows, FS, dirName, "X")
+    #     tempFeatureY = featureExtraction(denoiseSignal[dirName]["Y"], windows, FS, dirName, "Y")
+    #     feature[dirName] = np.hstack((tempFeatureX, tempFeatureY))
+    #     saveFeature(feature[dirName], f"feature-{dirName}")
+    # # endregion
+    #
+    # #region 特征光滑
+    # ModuleSegmentation("特征光滑")
+    # for dirName in tqdm.tqdm(dirNames, desc="特征光滑进度", ncols=100, file=sys.stdout):
+    #     feature = pd.read_csv(f"./Data/FeatureData/feature-{dirName}.csv", sep=",", encoding="utf-8").values
+    #     featureSmooth = []
+    #     for subFeature in feature.T:
+    #         tempSmooth = FeatureSmoothing.lowessFeatureSmooth(np.linspace(0, 1, len(subFeature)), subFeature, frac=0.1, it=3)
+    #         featureSmooth.append(tempSmooth[:, 1])
+    #     saveFeature(np.array(featureSmooth).T, f"featureSmooth-{dirName}")
+    # # endregion
 
     # #region 特征选择
     # ModuleSegmentation("特征选择")
@@ -183,6 +180,8 @@ if __name__ == "__main__":
     # weight = 0.5
     # for dirName in tqdm.tqdm(dirNames, desc="特征选择进度", ncols=100, file=sys.stdout):
     #     feature = pd.read_csv(f"./Data/FeatureData/featureSmooth-{dirName}.csv", sep=",", encoding="utf-8").values
+    #     # 故障起始点
+    #     faultStartPoint = []
     #     # 计算每个特征的单调性指标与敏感性指标与综合指标
     #     monotonicityIndex[dirName] = []
     #     sensitivityIndex[dirName] = []
@@ -190,10 +189,31 @@ if __name__ == "__main__":
     #     for i in range(len(feature[0])):
     #         tempMonotonicityIndex = MonotonicityIndex.monotonicityIndex(feature[:, i])
     #         tempSensitivityIndex = SensitivityIndex.sensitivityIndex(feature[:, i])
+    #         faultStartPoint.append(tempSensitivityIndex)
     #         tempComprehensiveIndex = weight*tempMonotonicityIndex + (1-weight)*tempSensitivityIndex
     #         monotonicityIndex[dirName].append(tempMonotonicityIndex/len(feature[:, i]))  # 归一化，一般单调性指标越大越好
     #         sensitivityIndex[dirName].append(1-tempSensitivityIndex/len(feature[:, i]))  # 归一化，取反，一般敏感性指标越小越好，为了与单调性指标统一因此取反
     #         comprehensiveIndex[dirName].append(tempComprehensiveIndex)
+    #     # 计算faultStartpoint最小点且不为-1
+    #     faultStartPoint = np.sort(faultStartPoint)
+    #     if -1 in faultStartPoint:
+    #         for i in faultStartPoint:
+    #             if i != -1:
+    #                 # 存储故障起始点
+    #                 pd.DataFrame([i]).to_csv(f"./Data/FeatureData/faultStartPoint-{dirName}.csv", header=False, sep=",", index=False)
+    #                 # 存储故障label
+    #                 faultLabel = [trainDataLifeTime[dirName]]*i
+    #                 faultLabel.extend(list(np.sort(np.linspace(0, trainDataLifeTime[dirName], len(feature) - i))[::-1]))
+    #                 assert len(faultLabel) == len(feature), "faultLabel is not equal feature"
+    #                 pd.DataFrame(faultLabel).to_csv(f"./Data/FeatureData/label-{dirName}.csv", header=False, sep=",", index=False)
+    #                 break
+    #     else:
+    #         # 存储故障label
+    #         faultLabel = [trainDataLifeTime[dirName]] * faultStartPoint[0]
+    #         faultLabel.extend(list(np.sort(np.linspace(0, trainDataLifeTime[dirName], len(feature) - faultStartPoint[0]))[::-1]))
+    #         assert len(faultLabel) == len(feature), "faultLabel is not equal feature"
+    #         pd.DataFrame(faultLabel).to_csv(f"./Data/FeatureData/label-{dirName}.csv", header=False, sep=",", index=False)
+    #         pd.DataFrame([faultStartPoint[0]]).to_csv(f"./Data/FeatureData/faultStartPoint-{dirName}.csv", header=False, sep=",", index=False)
     # # 选择每个dirName下综合指标最大的前10个特征，并取并集
     # featureIndex = []
     # for dirName in dirNames:
@@ -211,10 +231,10 @@ if __name__ == "__main__":
     # 读取特征索引
     featureIndex = pd.read_csv("./Data/FeatureData/featureIndex.csv", sep=",", encoding="utf-8", header=None).values.ravel()
     # 读取文件并将smoothData券后读取出来并且合并
-    allFeature = pd.read_csv(f"./Data/FeatureData/featureSmooth-{dirNames[0]}.csv", sep=",", encoding="utf-8", header=None).values[1:, featureIndex]
+    allFeature = pd.read_csv(f"./Data/FeatureData/featureSmooth-{dirNames[0]}.csv", sep=",", encoding="utf-8").values[1:, featureIndex]
     allLabel = pd.read_csv(f"./Data/FeatureData/label-{dirNames[0]}.csv", sep=",", encoding="utf-8", header=None).values[1:, :]
     for dirName in dirNames[1:]:
-        tempfeature = pd.read_csv(f"./Data/FeatureData/featureSmooth-{dirName}.csv", sep=",", encoding="utf-8", header=None).values[1:, featureIndex]
+        tempfeature = pd.read_csv(f"./Data/FeatureData/featureSmooth-{dirName}.csv", sep=",", encoding="utf-8").values[1:, featureIndex]
         templabel = pd.read_csv(f"./Data/FeatureData/label-{dirName}.csv", sep=",", encoding="utf-8", header=None).values[1:, :]
         allFeature = np.vstack((allFeature, tempfeature))
         allLabel = np.append(allLabel, templabel)

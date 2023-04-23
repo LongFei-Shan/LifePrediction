@@ -11,6 +11,7 @@ from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import MeanSquaredError
 import os
 from PredictionPicture import LSTMLossPicture
+from tensorflow.keras.utils import plot_model
 
 
 class LSTMBase:
@@ -38,6 +39,8 @@ class LSTMBase:
         self.model = self.modelBase()
         # 编译模型
         self.model.compile(optimizer=self.optimizer, loss=self.loss)
+        # 打印模型结构
+        plot_model(self.model, to_file='./model.png', show_shapes=True)
 
     def modelBase(self):
         model = Sequential()
@@ -45,7 +48,8 @@ class LSTMBase:
         model.add(LSTM(100, return_sequences=True))
         model.add(LSTM(70))
         model.add(Dense(70, activation="selu"))
-        model.add(Dropout(0.2))
+        model.add(Dense(30, activation="selu"))
+        model.add(Dense(10, activation="selu"))
         model.add(Dense(self.outputDim, activation="sigmoid"))
 
         return model
@@ -57,7 +61,7 @@ class LSTMBase:
         :return:
         """
         # 训练模型
-        self.model.fit(x, y, batch_size=self.batchSize, epochs=self.epoch, verbose=1)
+        self.model.fit(x, y, batch_size=self.batchSize, epochs=self.epoch, verbose=2)
         # 存储模型
         if not os.path.exists("./PredictionModel"):
             os.mkdir("./PredictionModel")
