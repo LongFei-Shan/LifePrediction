@@ -3,7 +3,7 @@
 # @FileName  :LSTMBase.py
 # @Time      :2023/3/8 12:34
 # @Author    :LongFei Shan
-
+import pandas as pd
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, LSTM, LeakyReLU, BatchNormalization
 import tensorflow.keras as keras
@@ -12,7 +12,10 @@ from tensorflow.keras.losses import MeanSquaredError
 import os
 from PredictionPicture import LSTMLossPicture
 from tensorflow.keras.utils import plot_model
-
+from tensorflow.keras.callbacks import ReduceLROnPlateau
+import tensorflow
+from colorama import init, Fore, Back, Style
+init()
 
 class LSTMBase:
     def __init__(self, lr, outputDim, batchSize, epoch, timeSteps, featureDim):
@@ -60,12 +63,19 @@ class LSTMBase:
         :param y: 训练数据标签
         :return:
         """
+        # 定义回调函数 降低学习率
+        reduce_lr = ReduceLROnPlateau(monitor='loss', factor=0.2, patience=5, min_lr=0.00001, verbose=1)
+        # 定义回调函数 打印训练进度
+        color_text = tensorflow.keras.callbacks.LambdaCallback(
+            on_epoch_end=lambda epoch, logs: print(Fore.GREEN + 'Epoch {} finished'.format(epoch+1) + Fore.RESET))
         # 训练模型
-        self.model.fit(x, y, batch_size=self.batchSize, epochs=self.epoch, verbose=2)
+        self.model.fit(x, y, batch_size=self.batchSize, epochs=self.epoch, verbose=0, validation_split=False, callbacks=[color_text])
         # 存储模型
         if not os.path.exists("./PredictionModel"):
             os.mkdir("./PredictionModel")
         self.model.save("./PredictionModel/LSTMLifePredictionModel/")
+        # 存储损失曲线
+        pd.DataFrame(self.model.history.history["loss"]).to_csv("./Data/TrainData/LSTM-Loss.csv")
 
     def predict(self, X):
         """
