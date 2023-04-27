@@ -5,7 +5,7 @@
 # @Author    :LongFei Shan
 import pandas as pd
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, LSTM, LeakyReLU, BatchNormalization
+from tensorflow.keras.layers import Dense, Dropout, LSTM, LeakyReLU, BatchNormalization, Flatten
 import tensorflow.keras as keras
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import MeanSquaredError
@@ -48,11 +48,15 @@ class LSTMBase:
     def modelBase(self):
         model = Sequential()
         model.add(LSTM(128, input_shape=(self.timeSteps, self.featureDim), return_sequences=True))
-        model.add(LSTM(100, return_sequences=True))
-        model.add(LSTM(70))
+        model.add(LSTM(100, return_sequences=True, dropout=0.2))
+        model.add(LSTM(70, return_sequences=True, dropout=0.2))
+        model.add(Flatten())
         model.add(Dense(70, activation="selu"))
+        model.add(Dropout(0.2))
         model.add(Dense(30, activation="selu"))
+        model.add(Dropout(0.2))
         model.add(Dense(10, activation="selu"))
+        model.add(Dropout(0.2))
         model.add(Dense(self.outputDim, activation="sigmoid"))
 
         return model
@@ -69,7 +73,7 @@ class LSTMBase:
         color_text = tensorflow.keras.callbacks.LambdaCallback(
             on_epoch_end=lambda epoch, logs: print(Fore.GREEN + 'Epoch {} finished'.format(epoch+1) + Fore.RESET))
         # 训练模型
-        self.model.fit(x, y, batch_size=self.batchSize, epochs=self.epoch, verbose=0, validation_split=False, callbacks=[color_text])
+        self.model.fit(x, y, batch_size=self.batchSize, epochs=self.epoch, verbose=1, validation_split=False, callbacks=[color_text])
         # 存储模型
         if not os.path.exists("./PredictionModel"):
             os.mkdir("./PredictionModel")
